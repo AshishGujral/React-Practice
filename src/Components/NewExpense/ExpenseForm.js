@@ -40,6 +40,7 @@ export const ExpenseForm = (props) => {
         date : new Date(enteredDate),
         amount : enteredAmount
     }
+    setButtonClicked(false);
     
     // here sending data to a parent class
     props.onSaveExpenseData(expenseData);
@@ -50,8 +51,18 @@ export const ExpenseForm = (props) => {
     setEnteredTitle('');
 
   }
+  let [buttonClicked, setButtonClicked] = useState(false );
+  const FormHandler = () =>{
+    setButtonClicked(true);
+  }
+  const FormDisappear = () =>{
+    setButtonClicked(false);
+  }
   return (
-    <form onSubmit={submitHandler}>
+    <div>
+
+{ buttonClicked ?
+      <form onSubmit={submitHandler}>
       <div className="new-expense__controls ">
         <div className="new-expense__control">
           <label>Title</label>
@@ -67,8 +78,14 @@ export const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit">Add Expense</button>
+      <button type="cancel" onClick={FormDisappear}>Cancel</button>
+        <button type="submit"  >Add Expense</button>
       </div>
     </form>
+    :
+  <button type="submit" onClick={FormHandler}>Add New Expense</button>
+}
+    </div>
+     
   );
 };

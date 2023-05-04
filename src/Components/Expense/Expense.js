@@ -3,6 +3,7 @@ import "./Expense.css";
 import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
 import Card from "../UI/Card";
+import ExpensesList from "./ExpensesList";
 const Expense = (props) => {
   const [filterYear, setFilterYear] = useState("2020");
   const SaveYearHandler = (enterYearData) => {
@@ -16,15 +17,7 @@ const Expense = (props) => {
     <div>
       <Card className="expenses">
         <ExpensesFilter onSaveYear={SaveYearHandler} selected={filterYear} />
-        {filteredExpenses.length == 0 ? <p>No expenses found</p> : 
-         filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        <ExpensesList items = {filteredExpenses}/>
        
       </Card>
     </div>

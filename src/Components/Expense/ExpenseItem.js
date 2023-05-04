@@ -6,7 +6,6 @@ import Card from "../UI/Card";
 // here i am using toLocaleString function
 // check it out here https://www.w3schools.com/jsref/jsref_tolocalestring.asp
 const ExpenseItem = (props) => {
-
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
@@ -14,8 +13,6 @@ const ExpenseItem = (props) => {
         <h2>{props.title}</h2>
         <div className="expense-item__price">{props.amount}</div>
       </div>
-    
-
     </Card>
   );
 };
